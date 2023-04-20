@@ -1,20 +1,15 @@
 <?php 
     $todoList = [
         
-            "cibo" => "pane",
-        
-    
+            "cibo" => "comprare il pane",
+
             "commissione" => "andare in posta",
-        
-        
+
             "pagamento" => "andare in banca",
-        
     
             "programmare" => "scrivere codice",
         
-        
             "giocare" => "giocare a Elden Ring",
-        
         
             "media" => "guardare un film"
     ];
@@ -23,6 +18,6 @@
     echo json_encode($todoList);
 
     if(isset($_POST['newItem'])) {
-        $todoList[] = $_POST['newItem'];
+        $todoList['newTask'] = $_POST['newItem'];
     }
     ?>

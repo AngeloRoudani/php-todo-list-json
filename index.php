@@ -16,9 +16,9 @@
                     <ul class="list-group">
                         <li v-for="element in todoList" class="list-group-item py-3">{{element}}</li>
                     </ul>
-                    <div class="input-group col-fluid mt-3">
-                        <input type="text" class="form-control " aria-label="Recipient's username" aria-describedby="button-addon2" v-model="addQuest">
-                        <button class="btn btn-primary" type="button" id="button-addon2">Aggiungi</button>
+                    <div class="input-group col-fluid mt-3 ps-0">
+                        <input type="text" class="form-control " aria-label="Recipient's username" aria-describedby="button-addon2" v-model="newItem" @keyup.enter="putDataInList">
+                        <button class="btn btn-primary" type="button" id="button-addon2" @click="putDataInList">Aggiungi</button>
                     </div>
 
                 </div>

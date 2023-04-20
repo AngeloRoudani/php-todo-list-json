@@ -4,7 +4,7 @@ const { createApp } = Vue
         data() {
             return {
                 todoList: [],
-                addQuest: '',
+                newItem: '',
             }
         },
         methods: {
@@ -12,21 +12,21 @@ const { createApp } = Vue
                 axios.get('server.php') 
                 .then(response => {
                     this.todoList = response.data;
-                    console.log(this.todoList);
                 });
             },
             putDataInList () {
                 const data = {
-                    newItem: this.addQuest
+                    newItem: this.newItem
                 };
                 axios.post('server.php', data, 
                 {
-                    header: {'Content-Type': 'multipart/form-data'}
+                    headers: {'Content-Type':'multipart/form-data'}
                 }
-            ).then ( response => {
-                this.todoList = response.data ;
-                this.addQuest = '';
-            })
+                ).then ( (response) => {
+                    this.todoList = response.data ;
+                    this.newItem = '';
+                    console.log(this.todoList);
+                });
             }
         },
         mounted () {
