@@ -3,7 +3,8 @@ const { createApp } = Vue
     createApp({
         data() {
             return {
-                todoList: []
+                todoList: [],
+                addQuest: '',
             }
         },
         methods: {
@@ -13,10 +14,23 @@ const { createApp } = Vue
                     this.todoList = response.data;
                     console.log(this.todoList);
                 });
+            },
+            putDataInList () {
+                const data = {
+                    newItem: this.addQuest
+                };
+                axios.post('server.php', data, 
+                {
+                    header: {'Content-Type': 'multipart/form-data'}
+                }
+            ).then ( response => {
+                this.todoList = response.data ;
+                this.addQuest = '';
+            })
             }
         },
         mounted () {
             this.getDataList();
         }
-        
+
     }).mount('#app')
