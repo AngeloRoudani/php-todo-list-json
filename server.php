@@ -14,10 +14,13 @@
             "media" => "guardare un film"
     ];
 
-    header ('Content-Type: application/json');
-    echo json_encode($todoList);
-
     if(isset($_POST['newItem'])) {
         $todoList['newTask'] = $_POST['newItem'];
     }
+
+    header ('Content-Type: application/json');
+    echo json_encode($todoList);
+
+
+    
     ?>
