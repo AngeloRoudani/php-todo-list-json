@@ -23,6 +23,7 @@ const { createApp } = Vue
 
             putDataInList () {
 
+                
                 const data = {
                     newItem: this.newItem
                 }
@@ -40,9 +41,10 @@ const { createApp } = Vue
 
             eraseText (index) {
 
-                this.activeItem = index;
-                console.log(this.activeItem)
-                /*const data = {
+                console.log(index)
+
+                const data = {
+
                     textLine: index
                 }
 
@@ -53,14 +55,15 @@ const { createApp } = Vue
 
                 }).then ( (response) => {
                     this.todoList = response.data ;
-                });*/
+                });
             },
  
             //eliminazione elemento dalla lista
             deleteData (index) {
-                this.activeItem = index;
 
-                /*const data = {
+                console.log(index);
+
+                const data = {
                     oldTask: index
                 }
 
@@ -71,7 +74,8 @@ const { createApp } = Vue
 
                 }).then ( (response) => {
                     this.todoList = response.data ;
-                });*/
+                });
+                console.log(this.todoList)
             },
         },
         mounted () {

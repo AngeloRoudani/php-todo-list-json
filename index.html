@@ -19,8 +19,8 @@
                         <li v-for="(element,index) in todoList" class="list-group-item py-3 d-flex justify-content-between" 
                             :class="(element.done == true)?'text-decoration-line-through':''"
                             >
-                            <div @click="eraseText">{{element.task}}</div>
-                            <i class="fa-solid fa-trash-can text-danger icon fs-4" v-on:click="deleteData"></i>
+                            <div @click="eraseText(index)">{{element.task}}</div>
+                            <i class="fa-solid fa-trash-can text-danger icon fs-4" v-on:click="deleteData(index)"></i>
                         </li>
                     </ul>
                     <div class="input-group col-fluid mt-3 ps-0">

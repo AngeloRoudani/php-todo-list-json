@@ -35,11 +35,18 @@
         file_put_contents('dataList.json', $newString);
     }
 
-    header ('Content-Type: application/json');
-    echo json_encode($todoList);
-
     if (isset($_POST['oldTask'])) {
-        echo array_splice($todoList, $_POST['oldTask']);
+        //creo una stringa vuota
+        $nothing = null;
+        //uso funzione splice e inserisco l'array da cui rimuovo,
+        //l'indice dell'elemento da rimuovere, quanti elementi rimuovere dall'indice(1),
+        //e inserisco una stringa nulla in sostituzione
+        array_splice($todoList, $_POST['oldTask'], 1, $nothing);
+
+        //salvo tutto nel file json
+        $delete = json_encode($todoList);
+
+        file_put_contents('dataList.json', $delete);
         
     }
 
@@ -48,6 +55,10 @@
         $todolist[$_POST['textLine']] = 'done' => true;
         
     }*/
+
+    header ('Content-Type: application/json');
+    echo json_encode($todoList);
+
 
 
     
