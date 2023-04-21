@@ -15,7 +15,7 @@
     } else {
 
         $todoList =[];
-        
+
     }
     
     //e se ciò che inserisco non è vuoto o falso 
@@ -37,6 +37,17 @@
 
     header ('Content-Type: application/json');
     echo json_encode($todoList);
+
+    if (isset($_POST['oldTask'])) {
+        echo array_splice($todoList, $_POST['oldTask']);
+        
+    }
+
+    /*if(isset($_POST['textLine'])) {
+
+        $todolist[$_POST['textLine']] = 'done' => true;
+        
+    }*/
 
 
     

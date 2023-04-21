@@ -5,10 +5,11 @@ const { createApp } = Vue
             return {
                 todoList: [],
                 newItem: '',
+                activeItem: 0
             }
         },
         methods: {
-            
+
             //chiamata ajax per caricamento dati da "API"
             
             getDataList () {
@@ -24,7 +25,7 @@ const { createApp } = Vue
 
                 const data = {
                     newItem: this.newItem
-                };
+                }
 
                 axios.post('server.php', data, 
                 {
@@ -34,9 +35,44 @@ const { createApp } = Vue
                 }).then ( (response) => {
                     this.todoList = response.data ;
                     this.newItem = '';
-                    console.log(this.todoList);
                 });
-            }
+            },
+
+            eraseText (index) {
+
+                this.activeItem = index;
+                console.log(this.activeItem)
+                /*const data = {
+                    textLine: index
+                }
+
+                axios.post('server.php', data, 
+                {
+
+                    headers: {'Content-Type':'multipart/form-data'}
+
+                }).then ( (response) => {
+                    this.todoList = response.data ;
+                });*/
+            },
+ 
+            //eliminazione elemento dalla lista
+            deleteData (index) {
+                this.activeItem = index;
+
+                /*const data = {
+                    oldTask: index
+                }
+
+                axios.post('server.php', data, 
+                {
+
+                    headers: {'Content-Type':'multipart/form-data'}
+
+                }).then ( (response) => {
+                    this.todoList = response.data ;
+                });*/
+            },
         },
         mounted () {
             this.getDataList();
