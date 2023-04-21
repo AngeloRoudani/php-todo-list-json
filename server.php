@@ -18,6 +18,7 @@
 
     }
     
+    
     //e se ciò che inserisco non è vuoto o falso 
 
     if(isset($_POST['newItem'])) {
@@ -44,31 +45,28 @@
         array_splice($todoList, $_POST['oldTask'], 1, $nothing);
 
         //salvo tutto nel file json
-        $delete = json_encode($todoList);
+        $newString = json_encode($todoList);
 
-        file_put_contents('dataList.json', $delete);
+        file_put_contents('dataList.json', $newString);
         
     }
-
+    //verifico il valore booleano della key cliccata 
     if(isset($_POST['textLine'])) {
-        //creo una variabile che renda un numero intero l'array $_POST
+
         $indexValue = intval($_POST['textLine']);
-        //ciclo l'array delle tasks ed estraggo =>
-        foreach ($todoList as $key) {
-            //=> l'index con lo stesso value dell' index cliccato e cambio il valore booleano
-            if($todoList[$indexValue]['done'] == false) {
 
-                $todoList[$indexValue]['done'] = true;
-                
-            } else {
+        if($todoList[$indexValue]['done'] == false) {
 
-                $todoList[$indexValue]['done'] = false;
-            }
+            $todoList[$indexValue]['done'] = true;
+            
+        } else {
+
+            $todoList[$indexValue]['done'] = false;
         }
-        //salvo tutto nel file json
-        $erase = json_encode($todoList);
+    
+        $newString = json_encode($todoList);
 
-        file_put_contents('dataList.json', $erase);
+        file_put_contents('dataList.json', $newString);
     }
 
 
