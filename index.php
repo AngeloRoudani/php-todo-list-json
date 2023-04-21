@@ -14,7 +14,7 @@
                 <div class="row w-50 mx-auto">
                     <h1 class="text-white text-center">Todo List</h1>
                     <ul class="list-group">
-                        <li v-for="element in todoList" class="list-group-item py-3">{{element}}</li>
+                        <li v-for="element in todoList" class="list-group-item py-3" :class="(element.done == true)?'text-decoration-line-through':''">{{element.task}}</li>
                     </ul>
                     <div class="input-group col-fluid mt-3 ps-0">
                         <input type="text" class="form-control " aria-label="Recipient's username" aria-describedby="button-addon2" v-model="newItem" @keyup.enter="putDataInList">
