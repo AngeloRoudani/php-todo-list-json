@@ -14,15 +14,18 @@
         <main>
             <div class="container mt-5 pt-3">
                 <div class="row w-50 mx-auto">
+                    
                     <h1 class="text-white text-center">Todo List</h1>
+
                     <ul class="list-group">
-                        <li v-for="(element,index) in todoList" class="list-group-item py-3 d-flex justify-content-between" 
-                            :class="(element.done == true)?'text-decoration-line-through':''"
-                            >
-                            <div @click="eraseText(index)">{{element.task}}</div>
+                        <li v-for="(element,index) in todoList" class="list-group-item py-3 d-flex justify-content-between" >
+                            <div :class="(element.done == true)?'text-decoration-line-through':''" @click="eraseText(index)">
+                                {{element.task}}
+                            </div>
                             <i class="fa-solid fa-trash-can text-danger icon fs-4" v-on:click="deleteData(index)"></i>
                         </li>
                     </ul>
+
                     <div class="input-group col-fluid mt-3 ps-0">
                         <input type="text" class="form-control " aria-label="Recipient's username" aria-describedby="button-addon2" v-model="newItem" @keyup.enter="putDataInList">
                         <button class="btn btn-primary" type="button" id="button-addon2" @click="putDataInList">Aggiungi</button>

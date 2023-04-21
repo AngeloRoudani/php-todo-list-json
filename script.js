@@ -56,6 +56,7 @@ const { createApp } = Vue
                 }).then ( (response) => {
                     this.todoList = response.data ;
                 });
+                console.log(this.todoList)
             },
  
             //eliminazione elemento dalla lista
@@ -75,7 +76,7 @@ const { createApp } = Vue
                 }).then ( (response) => {
                     this.todoList = response.data ;
                 });
-                console.log(this.todoList)
+                
             },
         },
         mounted () {

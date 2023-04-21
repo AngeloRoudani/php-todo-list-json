@@ -50,11 +50,27 @@
         
     }
 
-    /*if(isset($_POST['textLine'])) {
+    if(isset($_POST['textLine'])) {
+        //creo una variabile che renda un numero intero l'array $_POST
+        $indexValue = intval($_POST['textLine']);
+        //ciclo l'array delle tasks ed estraggo =>
+        foreach ($todoList as $key) {
+            //=> l'index con lo stesso value dell' index cliccato e cambio il valore booleano
+            if($todoList[$indexValue]['done'] == false) {
 
-        $todolist[$_POST['textLine']] = 'done' => true;
-        
-    }*/
+                $todoList[$indexValue]['done'] = true;
+                
+            } else {
+
+                $todoList[$indexValue]['done'] = false;
+            }
+        }
+        //salvo tutto nel file json
+        $erase = json_encode($todoList);
+
+        file_put_contents('dataList.json', $erase);
+    }
+
 
     header ('Content-Type: application/json');
     echo json_encode($todoList);
